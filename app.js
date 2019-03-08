@@ -4,24 +4,32 @@ const app = express()
 const hostname = '0.0.0.0'    // allows access from remote computers
 const port = 3002
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) =>{
   res.send('Welcome home!')
 })
 
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+app.get('/hello', (req, res) =>{
+  res.send('<title>Hello</title><h3>Hello World!</h3>')
 })
 
 app.get('/big',  (req, res) =>{
-  res.send('<h1>Hello World!</h1>')
+  res.send('<title>Big</title><h1>Hello World!</h1>')
 })
 
-app.get('/greeting/:id',  (req, res) =>{
-  res.send('Hello! The id was ' + req.params.id)
+app.get('/cool/',  (req, res) =>{
+  res.send('Add "/yourName" to the end of the url to access this page.')
 })
 
-app.get('/yo/:buddy',  (req, res) =>{
-  res.send('<h1>Yo, ' + req.params.buddy + '!</h1>')
+app.get('/cool/:person',  (req, res) =>{
+  res.send('Hey, ' + req.params.person + ', you are a cool person!')
+})
+
+app.get('/wow',  (req, res) =>{
+  res.send('<title>WOW</title><h1>WOW</h1><p>You found the WOW page. You will have a good day.</p>')
+})
+
+app.get('/bad',  (req, res) =>{
+  res.send('<title>BAD</title><h1>STOP</h1><p>YOU HAVE VIOLATED THE LAW</p>')
 })
 
 // handle non-existant routes
